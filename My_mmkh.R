@@ -82,3 +82,15 @@ My.mmkh=function (x, ci = 0.95)
            "Sen s slope" = slp, "old.variance" = var.S, "new.variance" = VS, "S statistic" = S, 
            "n" = n))
 }
+
+
+
+###################### How to run this function #############
+
+
+xy.list <- split(df$abundance, df$site_id) 
+xy.list <- xy.list[lengths(xy.list) >= 3]  # Need a minimun of three sampled years
+length(xy.list)
+
+MK <-as.data.frame(do.call(rbind,lapply(xy.list[1:132],function(x)unlist(My.mmkh(x))))) #Here change 132 to the number of your time series (xy.list)
+head(MK)
