@@ -94,3 +94,10 @@ length(xy.list)
 
 MK <-as.data.frame(do.call(rbind,lapply(xy.list[1:132],function(x)unlist(My.mmkh(x))))) #Here change 132 to the number of your time series (xy.list)
 head(MK)
+                                        
+## Format the table                                        
+setDT(MK, keep.rownames = TRUE)[]
+colnames(MK)[1] = "site_id"
+colnames(MK)[6] = "P_value"
+colnames(MK)[11] = "S_statistic"
+                                       
